@@ -9,19 +9,38 @@ html, body {
     margin: 0;
     padding: 0;
 }
+#logo {
+    margin-left: 70px;
+}
 #header_titel {
     color: white;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
 }
 .header-items {
     display: flex;
     align-items: center;
     justify-content: space-between;
     background-color: black;
+    position: fixed;
+    width: 100%;
 }
 #nav-items {
     display: flex;
     list-style: none;
+    margin-right: 70px;
+    gap: 6pc;
 }
 #nav-items a {
     text-decoration: none;
+    color: white;
+}
+#banner {
+    object-fit: cover;
+    height: 400px;
+    margin-bottom: 30px;
+}
+#subtitel {
+    margin-bottom: 15px;
 }
