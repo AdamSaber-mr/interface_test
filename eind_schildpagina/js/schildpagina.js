@@ -1,44 +1,38 @@
+let schilderijen = [
+    "frieda-diego.jpeg", "diego-I.jpeg", "wounded-deer.jpeg",
+    "the-frame.jpeg", "henry-ford.jpeg", "self-portrait.jpeg",
+    "two-fridas.jpeg", "roots.jpeg", "pitahayas.jpeg", "the-bus.jpeg"
+];
 
-    let paintings = [
-        { src: "../media/frieda-diego.jpeg", title: "Frieda and Diego Rivera" },
-        { src: "../media/diego-I.jpeg", title: "Diego And I" },
-        { src: "../media/wounded-deer.jpeg", title: "The Wounded Deer" },
-        { src: "../media/the-frame.jpeg", title: "The Frame" },
-        { src: "../media/henry-ford.jpeg", title: "Henry Ford Hospital" },
-        { src: "../media/self-portrait.jpeg", title: "Self-Portrait with Thorn Necklace and Hummingbird" },
-        { src: "../media/two-fridas.jpeg", title: "The Two Fridas" },
-        { src: "../media/roots.jpeg", title: "Roots" },
-        { src: "../media/pitahayas.jpeg", title: "Pitahayas" },
-        { src: "../media/the-bus.jpeg", title: "The Bus" }
-    ];
+let gallery = document.getElementsByClassName("gallery")[0];
+let bottomgallery = document.getElementsByClassName("bottom-gallery")[0]; 
 
-    let gallery = document.querySelector(".gallery");
-    let bottomGallery = document.querySelector(".bottom-gallery");
-    
-    function renderGallery() {
-        gallery.innerHTML = "";
-        bottomGallery.innerHTML = "";
-        
-        for (let i = 0; i < paintings.length; i++) {
-            let item = document.createElement("div");
-            item.className = "gallery-item";
-            
-            let img = document.createElement("img");
-            img.src = paintings[i].src;
-            img.alt = paintings[i].title;
-            
-            let caption = document.createElement("p");
-            caption.textContent = paintings[i].title;
-            
-            item.appendChild(img);
-            item.appendChild(caption);
-            
-            if (i < 8) {
-                gallery.appendChild(item);
-            } else {
-                bottomGallery.appendChild(item);
-            }
+function uploaden() {
+
+    gallery.innerHTML = "";
+    bottomgallery.innerHTML = "";
+
+    for (let i = 0; i < schilderijen.length; i++) {
+        let div = document.createElement("div");
+        div.classList.add("gallery-item");
+
+        let img = document.createElement("img");
+        img.src = "../media/" + schilderijen[i]; 
+
+        let text = document.createElement("p");
+        let bestandnaam = schilderijen[i];
+        let title = bestandnaam.replace('.jpeg', ''); // Verwijder de .jpeg
+        text.textContent = title;
+
+        div.appendChild(img);
+        div.appendChild(text);
+
+        if (i < 8) {
+            gallery.appendChild(div);
+        } else {
+            bottomgallery.appendChild(div); 
         }
     }
+}
 
-    renderGallery();
+uploaden();

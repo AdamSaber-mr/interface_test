@@ -1,35 +1,53 @@
-let formulier = document.getElementById("formulier");
+let ticketTypes = ["volwassen", "kind", "student", "senior"];
+let ticketPrijs = [35, 12.50, 27.50, 20];
 
-let resultatenContainer = document.createElement("div");
-resultatenContainer.id = "resultaten"; // Geef het een ID zodat we het later kunnen gebruiken
+function ticketPrijsBerekenen(ticketType) {
+    let prijs = 0;
 
-// Voeg de nieuwe <div> toe aan de container op de pagina
-document.getElementsByClassName("container")[0].appendChild(resultatenContainer);
-
-let bestellingen = []; //array aan maken
-
-formulier.onsubmit = function (controleer) {
-    controleer.preventDefault();
-    let voornaam = document.getElementById("voornaam").value;
-    let achternaam = document.getElementById("achternaam").value;
-    let aantal = document.getElementById("aantal").value;
-    let datum = document.getElementById("datum").value;
-    let ticket = document.getElementById("ticket").value;
-
-    if (!voornaam || !achternaam || !aantal || !datum || !ticket) {
-        alert("Vul alle velden in.");
-        return;
+    for (let i = 0; i < ticketTypes.length; i++) {
+        if (ticketTypes[i] === ticketType) { 
+            prijs = ticketPrijs[i];
+            break;
+        }
     }
 
-    bestellingen.push(`${voornaam} ${achternaam} - ${aantal} tickets voor ${ticket} op ${datum}`);
-    toonBestellingen();
-};
+    return prijs;
+}
 
-function toonBestellingen() {
-    resultatenContainer.innerHTML = "<br><h3>Bestelling</h3><br>";
-    for (let i = 0; i < bestellingen.length; i++) {
-        let p = document.createElement("p");
-        p.textContent = bestellingen[i];
-        resultatenContainer.appendChild(p);
+function resultaat(aantal, totaalBedrag) {
+    let resultaatContainer = document.getElementById("resultaten-container");
+
+    let bedanktBericht = document.createElement("h3");
+    bedanktBericht.textContent = "Bedankt voor uw bestelling!";
+
+    let aantalBericht = document.createElement("p");
+    aantalBericht.textContent = `Je hebt ${aantal} tickets gereserveerd`;
+
+    let totaalBericht = document.createElement("p");
+    totaalBericht.textContent = `Het totaal bedrag voor uw bestelling is €${totaalBedrag.toFixed(2)}`;
+
+    resultaatContainer.appendChild(bedanktBericht);
+    resultaatContainer.appendChild(aantalBericht);
+    resultaatContainer.appendChild(totaalBericht);
+}
+
+function verwerkFormulier(event) {
+
+    event.preventDefault(); // Voorkom dat het formulier wordt verzonden
+
+    let aantal = parseInt(document.getElementById("aantal").value);
+    let ticketType = document.getElementById("ticket").value;
+    let prijsPerTicket = ticketPrijsBerekenen(ticketType); 
+
+    let kortingskaart = document.getElementById("kortingskaart").checked;
+
+    if (kortingskaart) {
+        prijsPerTicket = 10;
     }
+
+    let totaalBedrag = aantal * prijsPerTicket;
+
+    document.getElementById("formulier").style.display = "none";
+
+    resultaat(aantal, totaalBedrag);
 }
