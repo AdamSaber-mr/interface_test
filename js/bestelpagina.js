@@ -27,11 +27,9 @@ formulier.onsubmit = function (controleer) {
 
 function toonBestellingen() {
     resultatenContainer.innerHTML = "<br><h3>Bestelling</h3><br>";
-    let i = 0;
-    while (i < bestellingen.length) {
+    for (let i = 0; i < bestellingen.length; i++) {
         let p = document.createElement("p");
         p.textContent = bestellingen[i];
         resultatenContainer.appendChild(p);
-        i++;
     }
 }
