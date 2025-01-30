@@ -4,8 +4,8 @@ let schilderijen = [
     "two-fridas.jpeg", "roots.jpeg", "pitahayas.jpeg", "the-bus.jpeg"
 ];
 
-let gallery = document.getElementsByClassName("gallery");
-let bottomgallery = document.getElementsByClassName("bottom-gallery")
+let gallery = document.getElementsByClassName("gallery")[0];
+let bottomgallery = document.getElementsByClassName("bottom-gallery")[0]; 
 
 function uploaden() {
 
@@ -14,13 +14,14 @@ function uploaden() {
 
     for (let i = 0; i < schilderijen.length; i++) {
         let div = document.createElement("div");
+        div.classList.add("gallery-item");
 
         let img = document.createElement("img");
-        img.src = "../media" + schilderijen[i];
+        img.src = "../media/" + schilderijen[i]; 
 
-        let text = document.createElement("p")
-        let bestandnaam = schilderijen[i]
-        let title = bestandnaam.replace('.jpeg', '');
+        let text = document.createElement("p");
+        let bestandnaam = schilderijen[i];
+        let title = bestandnaam.replace('.jpeg', ''); // Verwijder de .jpeg
         text.textContent = title;
 
         div.appendChild(img);
@@ -28,10 +29,10 @@ function uploaden() {
 
         if (i < 8) {
             gallery.appendChild(div);
-        }
-        else {
-            bottomgallery.appendChild(div);
+        } else {
+            bottomgallery.appendChild(div); 
         }
     }
-
 }
+
+uploaden();
