@@ -1,5 +1,5 @@
 let ticketTypes = ["volwassen", "kind", "student", "senior"];
-let ticketPrijs = [35, 12.50, 27.50, 20];
+let ticketPrijs = [15, 15, 15, 15];
 
 function ticketPrijsBerekenen(ticketType) {
     let prijs = 0;
@@ -24,7 +24,7 @@ function resultaat(aantal, totaalBedrag) {
     aantalBericht.textContent = `Je hebt ${aantal} tickets gereserveerd`;
 
     let totaalBericht = document.createElement("p");
-    totaalBericht.textContent = `Het totaal bedrag voor uw bestelling is €${totaalBedrag.toFixed(2)}`;
+    totaalBericht.textContent = `Het totaal bedrag voor uw bestelling is €${totaalBedrag}`;
 
     resultaatContainer.appendChild(bedanktBericht);
     resultaatContainer.appendChild(aantalBericht);
