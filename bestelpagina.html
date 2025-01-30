@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./css/bestelpagina.css">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+    <title> Bestel pagina</title>
+</head>
+<body>
+    
+    <header class="header">
+
+        <img src="./media/logo.png" id="logo">
+
+        <nav class="navigatie">
+            <ul class="nav-links">
+                <li><a href="../pro_hoofdpagina/hoofdpagina.html">Home</a></li>
+                <li><a href="../pro_schildpagina/schildpagina.html">Tentoonstelling</a></li>
+                <li class="dropdown">
+                    <a href="#">Dropdown</a>
+                    <ul class="dropdown-items">
+                        <li><a href="./bestelpagina.html">bestelpagina</a></li>
+                        <li><a href="../pro_schildpagina/schildpagina.html">Frida's Kahlo schilderijen</a></li>
+                        <li><a href="https://www.boijmans.nl/" target="_blank">boijmans van beuningen</a></li>
+                    </ul>
+                </li>
+                <li><a href="#">Contact</a></li>
+                <li id="tickets"><a href="./bestelpagina.html">Koop Tickets</a></li>
+            </ul>
+        </nav>
+
+    </header>
+
+    <main class="main-blok">
+        <div class="container" id="container">
+            <h2>Bestel je tickets</h2>
+            <form action="#" method="POST" id="formulier">
+                <label for="voornaam">Voornaam:</label>
+                <input type="text" id="voornaam" name="voornaam" required minlength="2" maxlength="50" placeholder="Voer je voornaam in">
+
+                <label for="achternaam">Achternaam:</label>
+                <input type="text" id="achternaam" name="achternaam" required minlength="2" maxlength="50" placeholder="Voer je achternaam in">
+
+                <label for="email">E-mailadres:</label>
+                <input type="email" id="email" name="email" required placeholder="voorbeeld@email.com">
+
+                <label for="aantal">Aantal tickets:</label>
+                <input type="number" id="aantal" name="aantal" required min="1" max="20" value="1">
+
+                <label for="datum">Bezoekdatum:</label>
+                <input type="date" id="datum" name="datum" required min="<?= date('Y-m-d') ?>">
+
+                <label for="ticket">Soort ticket:</label>
+                <select id="ticket" name="ticket" required>
+                    <option value="">-- Kies een ticket --</option>
+                    <option value="volwassen">Volwassen - €15</option>
+                    <option value="kind">Kind (t/m 12 jaar) - €7.50</option>
+                    <option value="student">Student - €10</option>
+                    <option value="senior">Senior (65+) - €12</option>
+                </select>
+
+                <button type="submit">Bestellen</button>
+            </form>
+        </div>
+    </main>
+
+    <script src="./js/oefening.js"></script>
+</body>
+</html>
