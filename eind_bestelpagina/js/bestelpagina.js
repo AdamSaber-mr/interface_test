@@ -24,7 +24,7 @@ function resultaat(aantal, totaalBedrag) {
     aantalBericht.textContent = `Je hebt ${aantal} tickets gereserveerd`;
 
     let totaalBericht = document.createElement("p");
-    totaalBericht.textContent = `Het totaal bedrag voor uw bestelling is €${totaalBedrag}`;
+    totaalBericht.textContent = `Het totaal bedrag voor uw bestelling is €${totaalBedrag.toFixed(2)}`;
 
     resultaatContainer.appendChild(bedanktBericht);
     resultaatContainer.appendChild(aantalBericht);
